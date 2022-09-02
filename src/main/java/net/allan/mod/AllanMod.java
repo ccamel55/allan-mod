@@ -1,21 +1,27 @@
 package net.allan.mod;
 
+import net.allan.mod.Modules.ClientInfo.ClientInfo;
+import net.allan.mod.Modules.Keystrokes.Keystrokes;
+import net.allan.mod.Utils.CommandManager.CommandManager;
+import net.allan.mod.Utils.EventManager.EventManager;
+import net.allan.mod.Utils.ModuleManager.Core.EModuleType;
+import net.allan.mod.Utils.ModuleManager.ModuleManager;
+import net.allan.mod.Utils.TabGUI.TabGUI;
 import net.fabricmc.api.ModInitializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class AllanMod implements ModInitializer {
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
-	public static final Logger LOGGER = LoggerFactory.getLogger("modid");
 
 	@Override
 	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
 
-		LOGGER.info("Hello Fabric world!");
+		// register all predefined commands
+		CommandManager.init();
+
+		// add our module to our modules list, they will have their own listeners that will be invoked when event is fired
+		ModuleManager.add(EModuleType.VISUAL, new ClientInfo());
+		ModuleManager.add(EModuleType.VISUAL, new Keystrokes());
+
+		// manually add our own listener for GUI, other modules will get added when they get created
+		EventManager.register(new TabGUI());
 	}
 }

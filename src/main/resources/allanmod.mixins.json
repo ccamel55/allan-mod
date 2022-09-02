@@ -6,7 +6,10 @@
   "mixins": [
   ],
   "client": [
-    "ExampleMixin"
+    "MixinClientPlayerEntity",
+    "MixinInGameHud",
+    "MixinKeyboard",
+    "MixinMinecraftClient"
   ],
   "injectors": {
     "defaultRequire": 1
