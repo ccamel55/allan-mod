@@ -18,8 +18,8 @@ public class AllanMod implements ModInitializer {
 		CommandManager.init();
 
 		// add our module to our modules list, they will have their own listeners that will be invoked when event is fired
-		ModuleManager.add(EModuleType.VISUAL, new ClientInfo());
-		ModuleManager.add(EModuleType.VISUAL, new Keystrokes());
+		ModuleManager.add(EModuleType.Visuals, new ClientInfo());
+		ModuleManager.add(EModuleType.Misc, new Keystrokes());
 
 		// manually add our own listener for GUI, other modules will get added when they get created
 		EventManager.register(new TabGUI());

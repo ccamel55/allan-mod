@@ -1,5 +1,7 @@
 package net.allan.mod.Mixin;
 
+import net.allan.mod.Events.EventKeyboardOnKey;
+import net.allan.mod.Utils.EventManager.EventManager;
 import net.minecraft.client.Keyboard;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -11,6 +13,6 @@ public class MixinKeyboard {
 
     @Inject(method = "onKey", at = @At("HEAD"), cancellable = true)
     public void onKey(long window, int key, int scancode, int action, int modifiers, CallbackInfo ci) {
-
+        EventManager.call(new EventKeyboardOnKey(key, action));
     }
 }

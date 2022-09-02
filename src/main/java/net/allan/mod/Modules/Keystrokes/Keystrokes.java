@@ -4,7 +4,6 @@ import net.allan.mod.Events.EventInGameHudRender;
 import net.allan.mod.Utils.CommandManager.Interfaces.ModCommand;
 import net.allan.mod.Utils.EventManager.Interfaces.IListenableMethod;
 import net.allan.mod.Utils.ModuleManager.Interfaces.ModModule;
-import net.minecraft.client.gui.DrawableHelper;
 
 public class Keystrokes extends ModModule {
 
