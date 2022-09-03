@@ -15,7 +15,6 @@ public class FontWrapper {
     private final VertexConsumerProvider.Immediate immediate = VertexConsumerProvider.immediate(buffer);
 
     public void render(TextRenderer textRenderer, String text, float x, float y,  int color, boolean shadow, float scale) {
-
         x += 0.5f * scale;
         y += 0.5f * scale;
 

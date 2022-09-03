@@ -3,7 +3,6 @@ package net.allan.mod.Utils.ModuleManager.Interfaces;
 import net.allan.mod.Utils.CommandManager.Interfaces.ModCommand;
 
 public abstract class ModModule {
-
     public String sName;
     public String sCommandName;
 
@@ -12,4 +11,5 @@ public abstract class ModModule {
     public boolean bIsCheat;
 
     public ModCommand pCommand;
+    public ModuleProperties pProperties;
 }

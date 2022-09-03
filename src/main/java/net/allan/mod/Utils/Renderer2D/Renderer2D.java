@@ -1,6 +1,7 @@
 package net.allan.mod.Utils.Renderer2D;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.allan.mod.AllanMod;
 import net.allan.mod.Utils.Renderer2D.Core.FontWrapper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -12,13 +13,10 @@ import java.awt.*;
 // just modified version of the games render handler :)
 public class Renderer2D {
 
+    private static MatrixStack mMatrixStack ;
     private static final FontWrapper pFontWrapper = new FontWrapper();
 
-    private static TextRenderer pTextRenderer;
-    private static MatrixStack mMatrixStack ;
-
     public static void begin(MatrixStack matrixStack) {
-        pTextRenderer = MinecraftClient.getInstance().textRenderer;
         mMatrixStack = matrixStack;
     }
 
@@ -27,7 +25,6 @@ public class Renderer2D {
     }
 
     public static void drawRect(float x, float y, float w, float h, Color color) {
-
         RenderSystem.enableBlend();
         RenderSystem.disableTexture();
         RenderSystem.defaultBlendFunc();
@@ -51,7 +48,6 @@ public class Renderer2D {
     }
 
     public static void drawRectFilled(float x, float y, float w, float h, Color color) {
-
         RenderSystem.enableBlend();
         RenderSystem.disableTexture();
         RenderSystem.defaultBlendFunc();
@@ -74,7 +70,6 @@ public class Renderer2D {
     }
 
     public static void drawLine(float x1, float y1, float x2, float y2, Color color) {
-
         RenderSystem.enableBlend();
         RenderSystem.disableTexture();
         RenderSystem.defaultBlendFunc();
@@ -95,10 +90,10 @@ public class Renderer2D {
     }
 
     public static void drawText(float x, float y, Color color, String string) {
-        pFontWrapper.render(pTextRenderer, string, x, y, color.getRGB(), false, 1.f);
+        pFontWrapper.render(AllanMod.client.textRenderer, string, x, y, color.getRGB(), false, 1.f);
     }
 
     public static void drawText(float x, float y, float scale, Color color, String string) {
-        pFontWrapper.render(pTextRenderer, string, x, y, color.getRGB(), false, scale);
+        pFontWrapper.render(AllanMod.client.textRenderer, string, x, y, color.getRGB(), false, scale);
     }
 }

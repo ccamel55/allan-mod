@@ -9,7 +9,8 @@
     "MixinClientPlayerEntity",
     "MixinInGameHud",
     "MixinKeyboard",
-    "MixinMinecraftClient"
+    "MixinMinecraftClient",
+    "MixinSplashTextResource"
   ],
   "injectors": {
     "defaultRequire": 1

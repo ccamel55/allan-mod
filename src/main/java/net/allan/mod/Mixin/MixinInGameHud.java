@@ -15,11 +15,8 @@ public class MixinInGameHud {
 
     @Inject(method = "render", at = @At("TAIL"), cancellable = true)
     public void render(MatrixStack matrices, float tickDelta, CallbackInfo ci) {
-
         Renderer2D.begin(matrices);
-        {
-            EventManager.call(new EventInGameHudRender(matrices));
-        }
+        EventManager.call(new EventInGameHudRender(matrices));
         Renderer2D.finish();
     }
 }

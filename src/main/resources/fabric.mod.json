@@ -1,19 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "allanmod",
+  "id": "allan-mod",
   "version": "${version}",
 
   "name": "Allan Mod",
   "description": "General purpose fabric mod. Mostly to mess around in.",
-  "authors": [
-    "Allan"
-  ],
-  "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
-  },
-
-  "license": "CC0-1.0",
   "icon": "assets/allanmod/icon.png",
 
   "environment": "*",

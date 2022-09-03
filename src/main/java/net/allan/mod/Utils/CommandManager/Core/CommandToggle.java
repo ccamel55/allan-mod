@@ -11,8 +11,7 @@ public class CommandToggle extends ModCommand {
     }
 
     @Override
-    public void handleMessage(String[] message)
-    {
+    public void handleMessage(String[] message) {
         if (!CommandManager.mModuleCmdName.containsKey(message[1])) {
             ChatMessage.printChatMessage("Could not find module: '" + message[1] + "'");
             return;
@@ -21,6 +20,8 @@ public class CommandToggle extends ModCommand {
         // ha
         final var module = CommandManager.mModuleCmdName.get(message[1]);
         module.bEnabled = !module.bEnabled;
+
+        ChatMessage.printChatMessage(message[1] + " is now " + (module.bEnabled ? "\u00A7aenabled" : "\u00A7cdisabled"));
     }
 
     @Override
