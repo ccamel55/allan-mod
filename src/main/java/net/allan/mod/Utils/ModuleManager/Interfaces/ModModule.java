@@ -12,4 +12,12 @@ public abstract class ModModule {
 
     public ModCommand pCommand;
     public ModuleProperties pProperties;
+
+    public void toggleEnable() {
+        bEnabled = !bEnabled;
+        onToggle(bEnabled);
+    }
+
+    // called once everytime we change the setting
+    public abstract void onToggle(boolean val);
 }

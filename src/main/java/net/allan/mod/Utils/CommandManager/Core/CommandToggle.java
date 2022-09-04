@@ -19,7 +19,7 @@ public class CommandToggle extends ModCommand {
 
         // ha
         final var module = CommandManager.mModuleCmdName.get(message[1]);
-        module.bEnabled = !module.bEnabled;
+        module.toggleEnable();
 
         ChatMessage.printChatMessage(message[1] + " is now " + (module.bEnabled ? "\u00A7aenabled" : "\u00A7cdisabled"));
     }

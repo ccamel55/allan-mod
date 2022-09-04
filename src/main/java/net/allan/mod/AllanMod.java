@@ -1,6 +1,6 @@
 package net.allan.mod;
 
-import net.allan.mod.Modules.TestModule.TestModule;
+import net.allan.mod.Modules.Fullbright.Fullbright;
 import net.allan.mod.Utils.CommandManager.CommandManager;
 import net.allan.mod.Utils.ConfigManager.ConfigManager;
 import net.allan.mod.Utils.EventManager.EventManager;
@@ -26,7 +26,7 @@ public class AllanMod implements ModInitializer {
 			modDir.mkdirs();
 
 		// modules must be registered first
-		ModuleManager.add(EModuleType.Misc, new TestModule());
+		ModuleManager.add(EModuleType.Misc, new Fullbright());
 
 		// we want to register all commands etc. using our modules
 		EventManager.init();

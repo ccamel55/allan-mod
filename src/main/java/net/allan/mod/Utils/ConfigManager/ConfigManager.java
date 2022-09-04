@@ -39,19 +39,22 @@ public class ConfigManager {
             return false;
 
         yamlMap.forEach((categoryS, categoryO) -> {
+
             // our big map will contain a smaller map that will have another map :(
             Map<String, Object> categoryMap = (Map<String, Object>)categoryO;
 
             categoryMap.forEach((moduleS, moduleO) -> {
 
                 final var module = ModuleManager.mModules.get(categoryS).get(moduleS);
-                Map<String, Object> moduleMap = (Map<String, Object>)moduleO;
 
-                module.iToggleKey = (int)moduleMap.get("key");
-                module.bEnabled =  (boolean)moduleMap.get("enabled");
+                if (module != null) {
+                    Map<String, Object> moduleMap = (Map<String, Object>)moduleO;
 
-                // load any properties
+                    module.iToggleKey = (int)moduleMap.get("key");
+                    module.bEnabled =  (boolean)moduleMap.get("enabled");
 
+                    // load any properties
+                }
             });
         });
 

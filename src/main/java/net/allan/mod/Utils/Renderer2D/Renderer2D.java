@@ -93,7 +93,7 @@ public class Renderer2D {
         pFontWrapper.render(AllanMod.client.textRenderer, string, x, y, color.getRGB(), false, 1.f);
     }
 
-    public static void drawText(float x, float y, float scale, Color color, String string) {
+    public static void drawText(float x, float y, Color color, String string,  float scale) {
         pFontWrapper.render(AllanMod.client.textRenderer, string, x, y, color.getRGB(), false, scale);
     }
 }
