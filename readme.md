@@ -10,8 +10,15 @@ or a tab gui at the least will be implemented.
 Some features are considered "cheats" by most people, therefore there is a global toggle to 
 enable cheat mode which also prevents you from joining any multiplayer servers.
 
-## Currently Implemented
+## Technical/backend things to do
+- Parameter system for modules
+- Better config system
+- Keybinding system
+- Custom OpenGL Renderer?
 
+## Currently Implemented
+- Fulbright
+- Toggle Sprint
 
 ## To do
 - Read Display
@@ -23,7 +30,6 @@ enable cheat mode which also prevents you from joining any multiplayer servers.
 - TPS
 - CPS
 - Keystrokes
-- Toggle Sprint
 - Block overlay
 - Custom crosshairs
-- Fullbright
+

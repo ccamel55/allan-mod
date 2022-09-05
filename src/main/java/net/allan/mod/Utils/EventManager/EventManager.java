@@ -1,7 +1,7 @@
 package net.allan.mod.Utils.EventManager;
 
 import net.allan.mod.Utils.EventManager.Core.EventListenerMethod;
-import net.allan.mod.Utils.EventManager.Interfaces.IEvent;
+import net.allan.mod.Utils.EventManager.Interfaces.EventCancellable;
 import net.allan.mod.Utils.EventManager.Interfaces.IListenableMethod;
 import net.allan.mod.Utils.ModuleManager.ModuleManager;
 
@@ -15,7 +15,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @SuppressWarnings("unchecked")
 public class EventManager {
 
-    public static Map<Class<? extends IEvent>, List<EventListenerMethod>> mRegisteredListeners = new HashMap<>();
+    public static Map<Class<? extends EventCancellable>, List<EventListenerMethod>> mRegisteredListeners = new HashMap<>();
 
     public static void init() {
         // add all currently registered modules to our events list
@@ -35,7 +35,7 @@ public class EventManager {
         }
     }
 
-    public static void register(Object object, Class<? extends IEvent> eventClass) {
+    public static void register(Object object, Class<? extends EventCancellable> eventClass) {
         for (final var method : object.getClass().getDeclaredMethods()) {
             // we only add methods that have be annotated as listeners and also have the class as the event we specified
             if (method.getParameterTypes().length != 1 || !method.isAnnotationPresent(IListenableMethod.class) || !method.getParameterTypes()[0].equals(eventClass))
@@ -47,7 +47,7 @@ public class EventManager {
 
     private static void register(Object object, Method method) {
         // the first parameter of any listenable method will be the event that will invoke it
-        final var listenerType = (Class<? extends IEvent>)method.getParameterTypes()[0];
+        final var listenerType = (Class<? extends EventCancellable>)method.getParameterTypes()[0];
         final var listenerMethod = new EventListenerMethod(object, method, method.getAnnotation(IListenableMethod.class).bPriority());
 
         if (!mRegisteredListeners.containsKey(listenerType))
@@ -75,14 +75,14 @@ public class EventManager {
         }
     }
 
-    public static void unregister(Object object, Class<? extends IEvent> event) {
+    public static void unregister(Object object, Class<? extends EventCancellable> event) {
         if (!mRegisteredListeners.containsKey(event))
             return;
 
         mRegisteredListeners.get(event).removeIf(method -> method.oSuperType.equals(object));
     }
 
-    public static void call(IEvent event) {
+    public static void call(EventCancellable event) {
         final var eventListeners = mRegisteredListeners.get((event.getClass()));
 
         if (eventListeners == null)

@@ -1,8 +1,8 @@
 package net.allan.mod.Events;
 
-import net.allan.mod.Utils.EventManager.Interfaces.IEvent;
+import net.allan.mod.Utils.EventManager.Interfaces.EventCancellable;
 
-public class EventKeyboardOnKey implements IEvent {
+public class EventKeyboardOnKey extends EventCancellable {
 
     public int iKey;
     public int iAction;
@@ -10,15 +10,5 @@ public class EventKeyboardOnKey implements IEvent {
     public EventKeyboardOnKey(int key, int action) {
         iKey = key;
         iAction = action;
-    }
-
-    @Override
-    public boolean isCancelled() {
-        return false;
-    }
-
-    @Override
-    public void setCancelled(boolean b) {
-
     }
 }
